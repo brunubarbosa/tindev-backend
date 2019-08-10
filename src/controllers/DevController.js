@@ -4,6 +4,7 @@ const Dev = require('../models/Dev');
 
 module.exports = {
   async index(req, res) {
+    // await Dev.deleteMany({});
     const { user } = req.headers;
 
     const loggedDev = await Dev.findById(user);
@@ -20,6 +21,7 @@ module.exports = {
   },
 
   async store(req, res) {
+    console.log('aq')
     const { username } = req.body;
     const { data } = await axios.get(`https://api.github.com/users/${username}`)
     const { name, bio, avatar_url: avatar } = data
